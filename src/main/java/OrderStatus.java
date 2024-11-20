@@ -7,6 +7,7 @@ import java.time.Duration;
 
 //страница Статус заказа
 public class OrderStatus {
+
     WebDriver driver;
     private final By notFound = By.xpath(".//*[@alt='Not found']");
 
@@ -15,8 +16,9 @@ public class OrderStatus {
         this.driver = driver;
     }
     //метод ожидания страницы Такого заказа нет
-    public void waitLoadOrderStatusPage() {
-        new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.presenceOfElementLocated(notFound));
+    public boolean waitLoadOrderStatusPage() {
+        return new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.presenceOfElementLocated(notFound)).isDisplayed();
     }
+
 }

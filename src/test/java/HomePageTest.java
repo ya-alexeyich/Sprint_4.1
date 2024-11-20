@@ -1,20 +1,15 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static constants.HomePageConstants.*;
+import constants.HomePageConstants;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class HomePageTest {
-    private WebDriver driver;
-    private final String site = "https://qa-scooter.praktikum-services.ru/";
+public class HomePageTest extends BaseTest {
+
+
     private final By question;
     private final By answer;
     private final By labelResult;
@@ -30,26 +25,20 @@ public class HomePageTest {
     @Parameterized.Parameters
     public static Object[][] getParameters() {
         return new Object[][]{
-                {QUESTION_0, ANSWER_0, ITEM_ANSWER_0, TEXT_ANSWER_0},
-                {QUESTION_1, ANSWER_1, ITEM_ANSWER_1, TEXT_ANSWER_1},
-                {QUESTION_2, ANSWER_2, ITEM_ANSWER_2, TEXT_ANSWER_2},
-                {QUESTION_3, ANSWER_3, ITEM_ANSWER_3, TEXT_ANSWER_3},
-                {QUESTION_4, ANSWER_4, ITEM_ANSWER_4, TEXT_ANSWER_4},
-                {QUESTION_5, ANSWER_5, ITEM_ANSWER_5, TEXT_ANSWER_5},
-                {QUESTION_6, ANSWER_6, ITEM_ANSWER_6, TEXT_ANSWER_6},
-                {QUESTION_7, ANSWER_7, ITEM_ANSWER_7, TEXT_ANSWER_7},
+                {HomePageConstants.QUESTION_0, HomePageConstants.ANSWER_0, HomePageConstants.ITEM_ANSWER_0, HomePageConstants.TEXT_ANSWER_0},
+                {HomePageConstants.QUESTION_1, HomePageConstants.ANSWER_1, HomePageConstants.ITEM_ANSWER_1, HomePageConstants.TEXT_ANSWER_1},
+                {HomePageConstants.QUESTION_2, HomePageConstants.ANSWER_2, HomePageConstants.ITEM_ANSWER_2, HomePageConstants.TEXT_ANSWER_2},
+                {HomePageConstants.QUESTION_3, HomePageConstants.ANSWER_3, HomePageConstants.ITEM_ANSWER_3, HomePageConstants.TEXT_ANSWER_3},
+                {HomePageConstants.QUESTION_4, HomePageConstants.ANSWER_4, HomePageConstants.ITEM_ANSWER_4, HomePageConstants.TEXT_ANSWER_4},
+                {HomePageConstants.QUESTION_5, HomePageConstants.ANSWER_5, HomePageConstants.ITEM_ANSWER_5, HomePageConstants.TEXT_ANSWER_5},
+                {HomePageConstants.QUESTION_6, HomePageConstants.ANSWER_6, HomePageConstants.ITEM_ANSWER_6, HomePageConstants.TEXT_ANSWER_6},
+                {HomePageConstants.QUESTION_7, HomePageConstants.ANSWER_7, HomePageConstants.ITEM_ANSWER_7, HomePageConstants.TEXT_ANSWER_7},
         };
     }
 
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(site);
-    }
 
     @Test
-    public void checkQuestions() {
+    public void checkQuestionsTest() {
         new HomePage(driver)
                 .waitForLoadHomePage()
                 .clickCookie()
@@ -61,8 +50,5 @@ public class HomePageTest {
         assertEquals(expected, result);
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+
 }

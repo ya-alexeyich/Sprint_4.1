@@ -3,6 +3,7 @@ package constants;
 import org.openqa.selenium.By;
 
 public class HomePageConstants {
+    public static final String site = "https://qa-scooter.praktikum-services.ru/";
     //вопросы
     public static final By QUESTION_0 = By.id("accordion__heading-0");
     public static final By QUESTION_1 = By.id("accordion__heading-1");

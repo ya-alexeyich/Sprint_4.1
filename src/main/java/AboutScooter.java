@@ -5,8 +5,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static constants.ScooterColours.BLACK;
-import static constants.ScooterColours.GREY;
+import constants.ScooterColours;
 
 //страница про аренду
 public class AboutScooter {
@@ -52,9 +51,9 @@ public class AboutScooter {
     }
     //метод выбора цвета
     public AboutScooter changeColour(Enum colour) {
-        if (colour.equals(BLACK)) {
+        if (colour.equals(ScooterColours.BLACK)) {
             driver.findElement(colourBlack).click();
-        } else if (colour.equals(GREY)) {
+        } else if (colour.equals(ScooterColours.GREY)) {
             driver.findElement(colourGrey).click();
         }
         return this;
@@ -64,7 +63,7 @@ public class AboutScooter {
         driver.findElement(comment).sendKeys(newComment);
         return this;
     }
-    //
+    //метод нажатия кнопки создать заказ
     public void clickButtonCreateOrder() {
         driver.findElement(createOrderButton).click();
     }

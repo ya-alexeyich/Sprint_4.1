@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static constants.CreateOrderButton.*;
+import constants.CreateOrderButton;
 
 //главная страница
 public class HomePage {
@@ -76,9 +76,9 @@ public class HomePage {
     }
     //выбора кнопки заказа
     public void clickCreateOrderButton(Enum button) {
-        if (button.equals(UP_BUTTON)) {
+        if (button.equals(CreateOrderButton.UP_BUTTON)) {
             clickUpOrderButton();
-        } else if (button.equals(DOWN_BUTTON)) {
+        } else if (button.equals(CreateOrderButton.DOWN_BUTTON)) {
             scrollToDownOrderButton();
             clickDownOrderButton();
         }

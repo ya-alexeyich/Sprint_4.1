@@ -1,12 +1,6 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static constants.CreateOrderButton.*;
 import static constants.RentDurationConstants.*;
@@ -14,9 +8,8 @@ import static constants.ScooterColours.*;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderCreateTest {
-    private WebDriver driver;
-    private final String site = "https://qa-scooter.praktikum-services.ru/";
+public class OrderCreateTest extends BaseTest {
+
     private final String name;
     private final String surname;
     private final String address;
@@ -56,15 +49,9 @@ public class OrderCreateTest {
         };
     }
 
-    @Before
-    public void startUp() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new ChromeDriver();
-        driver.get(site);
-    }
 
     @Test
-    public void testCreateOrderWithUpButton() {
+    public void createOrderWithUpButtonTest() {
         new HomePage(driver)
                 .waitForLoadHomePage()
                 .clickCookie()
@@ -94,8 +81,4 @@ public class OrderCreateTest {
         assertTrue(popUpWindow.getHeaderAfterCreateOrder().contains(expectedHeader));
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 }
